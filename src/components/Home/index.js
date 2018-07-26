@@ -28,9 +28,9 @@ class HomePage extends Component {
 
   render() {
     console.log(this.props.links);
-    if(Object.keys(this.props.links).length !== 0){
+    if(Object.keys(this.props.links).length !== 0)
       {this.props.links.map(link => console.log(link))}
-    }
+    
     return (
       <div>
         <h1>Home</h1>

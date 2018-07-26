@@ -1,4 +1,3 @@
-import * as types from '../constants/action_types';
 import axios from 'axios';
 
 export const customize = (data) => {
