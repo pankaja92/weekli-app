@@ -4,9 +4,8 @@ import 'firebase/database';
 import * as keys from '../config/keys';
 // require('dotenv').config()
 
-
 console.log(process.env);
-const prodConfig = {
+const devConfig = {
   apiKey: keys.apiKey,
   authDomain: keys.authDomain,
   databaseURL: keys.databaseURL,
@@ -15,7 +14,7 @@ const prodConfig = {
   messagingSenderId: keys.messagingSenderId
 };
 
-const devConfig = {
+const prodConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
