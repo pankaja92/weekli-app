@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import * as keys from '../config/keys';
+import * as config from '../config/keys';
 
 const devConfig = {
   apiKey: keys.apiKey,
