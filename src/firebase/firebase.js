@@ -2,19 +2,17 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import * as keys from '../config/keys';
-// require('dotenv').config()
 
-console.log(process.env);
 const devConfig = {
   apiKey: keys.apiKey,
   authDomain: keys.authDomain,
-  databaseURL: keys.databaseURL,
+  databaseURL: "https://weekli-dev-12722.firebaseio.com",
   projectId: keys.projectId,
   storageBucket: keys.storageBucket,
   messagingSenderId: keys.messagingSenderId
 };
 
-const prodConfig = {
+const prodConfig= {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
