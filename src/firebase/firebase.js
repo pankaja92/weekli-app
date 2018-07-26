@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import * as keys from '../config/keys';
-require('dotenv').config()
+// require('dotenv').config()
 
 
 console.log(process.env);
