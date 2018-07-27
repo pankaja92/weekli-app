@@ -33,10 +33,6 @@ class HomePage extends Component {
 
   render() {
     const { links } = this.props;
-    if (Object.keys(links).length !== 0) {
-      links.map(link => console.log(link));
-    }
-
     return (
       <div>
         <h1>Home</h1>
