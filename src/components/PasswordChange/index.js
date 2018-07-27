@@ -6,53 +6,48 @@ class PasswordChangeForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       passwordOne: '',
       passwordTwo: '',
       error: null,
-     };
+    };
   }
 
-  onSubmit = (event) => {
+  onSubmit = event => {
     const { passwordOne } = this.state;
 
-    auth.doPasswordUpdate(passwordOne)
+    auth
+      .doPasswordUpdate(passwordOne)
       .then(() => {
-        this.setState(() => ({ 
+        this.setState(() => ({
           passwordOne: '',
           passwordTwo: '',
           error: null,
-         }));
+        }));
       })
       .catch(error => {
-        this.setState({error});
+        this.setState({ error });
       });
 
     event.preventDefault();
-  }
+  };
 
   render() {
-    const {
-      passwordOne,
-      passwordTwo,
-      error,
-    } = this.state;
+    const { passwordOne, passwordTwo, error } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '';
+    const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
           value={passwordOne}
-          onChange={event => this.setState({passwordOne: event.target.value})}
+          onChange={event => this.setState({ passwordOne: event.target.value })}
           type="password"
           placeholder="New Password"
         />
         <input
           value={passwordTwo}
-          onChange={event => this.setState({passwordTwo: event.target.value})}
+          onChange={event => this.setState({ passwordTwo: event.target.value })}
           type="password"
           placeholder="Confirm New Password"
         />
@@ -60,7 +55,7 @@ class PasswordChangeForm extends Component {
           Reset My Password
         </button>
 
-        { error && <p>{error.message}</p> }
+        {error && <p>{error.message}</p>}
       </form>
     );
   }

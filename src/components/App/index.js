@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
@@ -19,7 +15,7 @@ import Extensions from '../Extensions';
 import NotFound from '../NotFound';
 import * as routes from '../../constants/routes';
 
-const App = () =>
+const App = () => (
   <Router>
     <div className="app">
       <Navigation />
@@ -37,5 +33,6 @@ const App = () =>
       </Switch>
     </div>
   </Router>
+);
 
 export default withAuthentication(App);
