@@ -27,9 +27,11 @@ const NavigationAuth = () => (
         </li>
         <Reusalbe />
         <li>
-          <NavLink to={routes.ACCOUNT} activeClassName="activeLink">
-            Account
-          </NavLink>
+          <span>
+            <NavLink to={routes.ACCOUNT} activeClassName="activeLink">
+              Account
+            </NavLink>
+          </span>
         </li>
         <li>
           <SignOutButton />
