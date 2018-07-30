@@ -1,0 +1,67 @@
+
+.navbar > * {
+    box-sizing: border-box
+}
+
+.navbar > ul{
+    display: flex;
+    height: 50px; 
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul > div {
+    display: flex;
+}
+
+.notlogo > * {
+    margin-right: 10px;
+}
+
+li {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+}
+
+span > * {
+    text-decoration: none;
+} 
+
+
+li > span > * {
+    margin: 10px;
+    padding: 5px 10px ;
+}
+
+span :hover {
+    color: aliceblue;
+    outline: none;
+    border-radius: 3px;
+    background-color: var(--pink);
+}
+
+.activeLink {
+    color: white;
+    outline: none;
+    border-radius: 3px;
+    background-color: var(--pink);
+    /* text-decoration-line: underline; */
+}
+
+.activateLogo {
+    outline: 1px;
+    transition: transform .2s;
+}
+
+.activateLogo :hover{
+    transition: transform .2s;
+    -ms-transform: scale(1.02); /* IE 9 */
+    -webkit-transform: scale(1.02); /* Safari 3-8 */
+    transform: scale(1.02); 
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: -5px;
+}
