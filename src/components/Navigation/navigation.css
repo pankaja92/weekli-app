@@ -1,3 +1,6 @@
+.navbar {
+    margin-bottom: 10%;
+}
 
 .navbar > * {
     box-sizing: border-box
@@ -37,14 +40,14 @@ span :hover {
     color: aliceblue;
     outline: none;
     border-radius: 3px;
-    background-color: var(--pink);
+    background-color: var(--blue);
 }
 
 .activeLink {
     color: white;
     outline: none;
     border-radius: 3px;
-    background-color: var(--pink);
+    background-color: var(--blue);
     /* text-decoration-line: underline; */
 }
 

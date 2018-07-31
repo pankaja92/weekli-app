@@ -8,9 +8,10 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import login from '../../actions/login';
 import * as routes from '../../constants/routes';
+import './Signin.css';
 
 const SignInPage = props => (
-  <div>
+  <div className="Form-container">
     <h1>SignIn</h1>
     <SignInForm {...props} />
     <PasswordForgetLink />
@@ -51,7 +52,7 @@ class SignInForm extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="Form">
         <input
           value={email}
           onChange={event => this.setState({ email: event.target.value })}
@@ -64,7 +65,7 @@ class SignInForm extends Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" className="Signin-btn">
           Sign In
         </button>
 

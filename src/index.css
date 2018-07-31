@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
 :root{
-    --yellow :#ffc600;
-    --grey : #E3E2DF;
-    --lightPink : #E3AFBC;
-    --lightMaroon : #9A1750;
-    --pink : #EE4C7C;
-    --maroon : #5D001E;
+    --purple :#5680E9;
+    --lightBlue : #84CEEB;
+    --blue : #5AB9BA;
+    --lightPink : #C1C8E4;
+    --ping : #8860D0;
 }
 
 body {
     box-sizing: border-box;
     font-family: 'PT Sans', sans-serif;
-    background-color: var(--grey);
+    background-color: var(--lightPink);
     margin: 50px;
 }

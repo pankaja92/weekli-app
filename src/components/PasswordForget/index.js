@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 const PasswordForgetPage = () => (
-  <div>
+  <div className="Form-container">
     <h1>PasswordForget</h1>
     <PasswordForgetForm />
   </div>
@@ -42,7 +41,7 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="Form">
         <input
           value={email}
           onChange={event => this.setState({ email: event.target.value })}

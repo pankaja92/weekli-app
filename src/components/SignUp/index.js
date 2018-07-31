@@ -8,7 +8,7 @@ import * as routes from '../../constants/routes';
 import signup from '../../actions/signup';
 
 const SignUpPage = props => (
-  <div>
+  <div className="Form-container">
     <h1>SignUp</h1>
     <SignUpForm {...props} />
   </div>
@@ -63,7 +63,7 @@ class SignUpForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '' || username === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="Form">
         <input
           value={username}
           onChange={event => this.setState({ username: event.target.value })}
