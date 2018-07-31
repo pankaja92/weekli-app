@@ -1,15 +1,14 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import * as keys from '../config/config';
 
 const devConfig = {
-  apiKey: keys.apiKey,
-  authDomain: keys.authDomain,
-  databaseURL: 'https://weekli-dev-12722.firebaseio.com',
-  projectId: keys.projectId,
-  storageBucket: keys.storageBucket,
-  messagingSenderId: keys.messagingSenderId,
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY_DEV,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN_DEV,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL_DEV,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID_DEV,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAG_EBUCKET_DEV,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID_DEV,
 };
 
 const prodConfig = {

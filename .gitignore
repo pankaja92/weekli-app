@@ -21,7 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # config
-keys.js
-# /src/firebase/firebase.js
+/src/config
 .env
 .netlify
