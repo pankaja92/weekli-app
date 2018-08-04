@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 import emailValidator from '../../utils/emaiValidator';
+
+const styles = {
+  input: {
+    fontFamily: "'PT Sans', sans-serif",
+    fontSize: '18px',
+    color: 'var(--white)',
+    marginBottom: '10px',
+  },
+};
 
 const P = styled.p`
   margin-bottom: 0;
@@ -25,10 +37,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PasswordForgetPage = () => (
+const PasswordForgetPage = props => (
   <div className="Form-container">
     <h1>Reset Password</h1>
-    <PasswordForgetForm />
+    <PasswordForgetForm {...props} />
   </div>
 );
 
@@ -59,16 +71,19 @@ class PasswordForgetForm extends Component {
 
   render() {
     const { email, error } = this.state;
-
+    const { classes } = this.props;
     const isInvalid = emailValidator(email) === false;
 
     return (
       <form onSubmit={this.onSubmit} className="Form">
-        <input
+        <TextField
           value={email}
           onChange={event => this.setState({ email: event.target.value })}
           type="text"
           placeholder="Email Address"
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <Button disabled={isInvalid} type="submit" className="button">
           Reset My Password
@@ -80,12 +95,14 @@ class PasswordForgetForm extends Component {
   }
 }
 
+PasswordForgetForm.propTypes = { classes: PropTypes.shape({}).isRequired };
+
 const PasswordForgetLink = () => (
   <P>
     <StyledLink to={routes.PASSWORD_FORGET}>Forgot Password?</StyledLink>
   </P>
 );
 
-export default PasswordForgetPage;
+export default withStyles(styles)(PasswordForgetPage);
 
 export { PasswordForgetForm, PasswordForgetLink };

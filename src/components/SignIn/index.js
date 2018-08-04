@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import Input from '@material-ui/core/Input';
-import styled from 'styled-components';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
@@ -15,11 +15,14 @@ import * as routes from '../../constants/routes';
 import emailValidator from '../../utils/emaiValidator';
 import './Signin.css';
 
-const InputText = styled(Input)`
-  padding: 0 10px;
-  font-family: 'PT Sans', sans-serif;
-  color: red;
-`;
+const styles = {
+  input: {
+    fontFamily: "'PT Sans', sans-serif",
+    fontSize: '18px',
+    color: 'var(--white)',
+    margin: '10px 0 20px',
+  },
+};
 
 const SignInPage = props => (
   <div className="Form-container">
@@ -60,22 +63,28 @@ class SignInForm extends Component {
 
   render() {
     const { email, password, error } = this.state;
+    const { classes } = this.props;
     const isInvalid = password === '' || emailValidator(email) === false;
 
     return (
       <form onSubmit={this.onSubmit} className="Form">
-        <InputText
+        <TextField
           onChange={event => this.setState({ email: event.target.value })}
           type="text"
           placeholder="Email address"
           value={email}
+          InputProps={{
+            className: classes.input,
+          }}
         />
-        <InputText
-          style={{ margin: '10px 0 20px' }}
+        <TextField
           placeholder="Password"
           value={password}
           type="password"
           onChange={event => this.setState({ password: event.target.value })}
+          InputProps={{
+            className: classes.input,
+          }}
         />
         <button disabled={isInvalid} type="submit" className="button">
           Sign In
@@ -89,13 +98,16 @@ class SignInForm extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators({ loginFunc: login }, dispatch);
 
 SignInForm.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
   loginFunc: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(withRouter(SignInPage));
+export default withStyles(styles)(
+  connect(
+    null,
+    mapDispatchToProps
+  )(withRouter(SignInPage))
+);
 
 export { SignInForm };
