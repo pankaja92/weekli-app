@@ -22,8 +22,6 @@ const prodConfig = {
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-console.log(config);
-
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
