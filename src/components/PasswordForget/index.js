@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
+import emailValidator from '../../utils/emaiValidator';
+
+const P = styled.p`
+  margin-bottom: 0;
+`;
+
+const Button = styled.button`
+  margin: 10px 20px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-weight: 400;
+  &:hover {
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: var(--white);
+  }
+`;
 
 const PasswordForgetPage = () => (
   <div className="Form-container">
-    <h1>PasswordForget</h1>
+    <h1>Reset Password</h1>
     <PasswordForgetForm />
   </div>
 );
@@ -38,7 +60,7 @@ class PasswordForgetForm extends Component {
   render() {
     const { email, error } = this.state;
 
-    const isInvalid = email === '';
+    const isInvalid = emailValidator(email) === false;
 
     return (
       <form onSubmit={this.onSubmit} className="Form">
@@ -48,9 +70,9 @@ class PasswordForgetForm extends Component {
           type="text"
           placeholder="Email Address"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} type="submit" className="button">
           Reset My Password
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -59,9 +81,9 @@ class PasswordForgetForm extends Component {
 }
 
 const PasswordForgetLink = () => (
-  <p>
-    <Link to={routes.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
+  <P>
+    <StyledLink to={routes.PASSWORD_FORGET}>Forgot Password?</StyledLink>
+  </P>
 );
 
 export default PasswordForgetPage;

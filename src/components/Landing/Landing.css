@@ -25,12 +25,3 @@ h2 {
     justify-content: center;
 }
 
-.this-span> * {
-    padding: 10px 35px;
-    border-radius: 5px;
-    font-size: 24px;
-    width: 100px;
-    background-color: var(--pink);
-}
-
-

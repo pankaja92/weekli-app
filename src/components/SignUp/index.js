@@ -3,9 +3,22 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 import signup from '../../actions/signup';
+import emailValidator from '../../utils/emaiValidator';
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-weight: 400;
+  &:hover {
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--white);
+  }
+`;
 
 const SignUpPage = props => (
   <div className="Form-container">
@@ -60,7 +73,10 @@ class SignUpForm extends Component {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid =
-      passwordOne !== passwordTwo || passwordOne === '' || username === '' || email === '';
+      passwordOne !== passwordTwo ||
+      passwordOne === '' ||
+      username === '' ||
+      emailValidator(email) === false;
 
     return (
       <form onSubmit={this.onSubmit} className="Form">
@@ -88,7 +104,7 @@ class SignUpForm extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" className="button">
           Sign Up
         </button>
 
@@ -100,7 +116,7 @@ class SignUpForm extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don`t have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
+    Not yet Signed Up ? <StyledLink to={routes.SIGN_UP}>Sign Up</StyledLink>
   </p>
 );
 

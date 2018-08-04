@@ -30,25 +30,26 @@ span > * {
     text-decoration: none;
 } 
 
+span { 
+    font-size: 18px;
+}
+
 
 li > span > * {
     margin: 10px;
     padding: 5px 10px ;
+    color : var(--black);
 }
 
-span :hover {
-    color: aliceblue;
+span :hover, .activeLink { 
+    color: var(--white);
     outline: none;
     border-radius: 3px;
-    background-color: var(--blue);
+    background: var(--btnGradient)
 }
 
 .activeLink {
-    color: white;
-    outline: none;
-    border-radius: 3px;
-    background-color: var(--blue);
-    /* text-decoration-line: underline; */
+    font-weight: 600;
 }
 
 .activateLogo {

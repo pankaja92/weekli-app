@@ -1,18 +1,29 @@
+/* eslint-disable no-unused-state */
+
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import Input from '@material-ui/core/Input';
+import styled from 'styled-components';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import login from '../../actions/login';
 import * as routes from '../../constants/routes';
+import emailValidator from '../../utils/emaiValidator';
 import './Signin.css';
+
+const InputText = styled(Input)`
+  padding: 0 10px;
+  font-family: 'PT Sans', sans-serif;
+  color: red;
+`;
 
 const SignInPage = props => (
   <div className="Form-container">
-    <h1>SignIn</h1>
+    <h2>Sign In</h2>
     <SignInForm {...props} />
     <PasswordForgetLink />
     <SignUpLink />
@@ -49,26 +60,26 @@ class SignInForm extends Component {
 
   render() {
     const { email, password, error } = this.state;
-    const isInvalid = password === '' || email === '';
+    const isInvalid = password === '' || emailValidator(email) === false;
 
     return (
       <form onSubmit={this.onSubmit} className="Form">
-        <input
-          value={email}
+        <InputText
           onChange={event => this.setState({ email: event.target.value })}
           type="text"
-          placeholder="Email Address"
+          placeholder="Email address"
+          value={email}
         />
-        <input
-          value={password}
-          onChange={event => this.setState({ password: event.target.value })}
-          type="password"
+        <InputText
+          style={{ margin: '10px 0 20px' }}
           placeholder="Password"
+          value={password}
+          type="password"
+          onChange={event => this.setState({ password: event.target.value })}
         />
-        <button disabled={isInvalid} type="submit" className="Signin-btn">
+        <button disabled={isInvalid} type="submit" className="button">
           Sign In
         </button>
-
         {error && <p>{error.message}</p>}
       </form>
     );
