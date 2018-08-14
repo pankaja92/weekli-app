@@ -7,12 +7,12 @@ const getLinks = userid => async dispatch => {
       params: { userid },
     });
     const { data } = await response;
-    dispatch({
+    return dispatch({
       type: types.GET_LINKS,
       payload: data,
     });
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 

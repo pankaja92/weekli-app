@@ -16,12 +16,12 @@ const login = userid => async dispatch => {
       minute,
     };
 
-    dispatch({
+    return dispatch({
       type: types.LOGIN,
       payload: activeUser,
     });
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 

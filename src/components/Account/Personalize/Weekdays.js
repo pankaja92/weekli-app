@@ -29,22 +29,16 @@ class Weekdays extends Component {
   };
 
   render() {
-    const {
-      toChildDay: { dayNumber },
-    } = this.props;
+    const { toChildDay } = this.props;
 
-    const day = calender[dayNumber];
+    const day = calender[toChildDay];
     return <Select value={day} onChange={this.handleChange} options={calender} />;
   }
 }
 
 Weekdays.propTypes = {
   getDay: PropTypes.func.isRequired,
-  toChildDay: PropTypes.number,
-};
-
-Weekdays.defaultProps = {
-  toChildDay: 5,
+  toChildDay: PropTypes.number.isRequired,
 };
 
 export default Weekdays;

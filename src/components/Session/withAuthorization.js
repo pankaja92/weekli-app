@@ -28,7 +28,7 @@ const withAuthorization = condition => Component => {
   });
 
   WithAuthorization.propTypes = {
-    authUser: PropTypes.string,
+    authUser: PropTypes.shape({}),
     history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
   };
 

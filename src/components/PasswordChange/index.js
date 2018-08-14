@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import { auth } from '../../firebase';
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 class PasswordChangeForm extends Component {
   constructor(props) {
@@ -38,7 +44,7 @@ class PasswordChangeForm extends Component {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit}>
         <input
           value={passwordOne}
           onChange={event => this.setState({ passwordOne: event.target.value })}
@@ -56,7 +62,7 @@ class PasswordChangeForm extends Component {
         </button>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }

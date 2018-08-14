@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import * as routes from '../../constants/routes';
 import './Landing.css';
 
@@ -32,21 +33,44 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const LandingPage = () => (
-  <Fragment>
-    <div className="description">
-      <div>
-        <h2>Bookmarks as Reminders !</h2>
-        <h4 className="low-heading">Get your custom Newsletter weekli </h4>
-        <div className="signin-btn">
-          <div align="center">
-            <StyledLink to={routes.SIGN_IN}>Sign in</StyledLink>
+class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+    };
+  }
+
+  componentWillReceiveProps(props) {
+    if (props) {
+      this.setState({ loggedIn: true });
+    }
+  }
+
+  render() {
+    const { loggedIn } = this.state;
+    return (
+      <Fragment>
+        <div className="description">
+          <div>
+            <h2>Bookmarks as Reminders !</h2>
+            <h4 className="low-heading">Get your custom Newsletter weekli </h4>
+            {!loggedIn && (
+              <div className="signin-btn">
+                <div align="center">
+                  <StyledLink to={routes.SIGN_IN}>Sign in</StyledLink>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-      </div>
-    </div>
-    <div className="images">asdasd</div>
-  </Fragment>
-);
+        <div className="images">asdasd</div>
+      </Fragment>
+    );
+  }
+}
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+});
 
-export default LandingPage;
+export default connect(mapStateToProps)(LandingPage);

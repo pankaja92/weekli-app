@@ -2,13 +2,12 @@
 
 import axios from 'axios';
 
-const signup = user => async dispatch => {
-  console.log(user);
-  const response = await axios.post('http://localhost:5000/api/user/register', user);
-  console.log(response);
+const signup = user => {
+  const response = axios.post('http://localhost:5000/api/user/register', user);
   if (response.status === 200) {
     return true;
   }
+  return false;
 };
 
 export default signup;

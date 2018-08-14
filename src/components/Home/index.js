@@ -76,10 +76,6 @@ HomePage.propTypes = {
   user: PropTypes.string.isRequired,
   addLinkFunc: PropTypes.func.isRequired,
   getLinksFunc: PropTypes.func.isRequired,
-  links: PropTypes.shape({
-    linkid: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default compose(

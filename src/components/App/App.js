@@ -2,17 +2,17 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navigation from '../Navigation';
-import LandingPage from '../Landing';
-import SignUpPage from '../SignUp';
-import SignInPage from '../SignIn';
-import PasswordForgetPage from '../PasswordForget';
-import HomePage from '../Home';
-import AccountPage from '../Account';
+import LandingPage from '../Landing/Loader';
+import SignUpPage from '../SignUp/Loader';
+import SignInPage from '../SignIn/Loader';
+import PasswordForgetPage from '../PasswordForget/Loader';
+import HomePage from '../Home/Loader';
+import AccountPage from '../Account/Loader';
 import withAuthentication from '../Session/withAuthentication';
-import FAQ from '../FAQ';
-import Contact from '../Contact';
-import Extensions from '../Extensions';
-import NotFound from '../NotFound';
+import FAQ from '../FAQ/Loader';
+import Contact from '../Contact/Loader';
+import Extensions from '../Extensions/Loader';
+import NotFound from '../NotFound/Loader';
 import * as routes from '../../constants/routes';
 
 const Root = () => (
